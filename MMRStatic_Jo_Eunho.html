@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retirement Calculator</h1>
+        <form id="retirementForm">
+            <div class="form-group">
+                <input type="number" id="startingAge" name="startingAge" required placeholder="Starting Age">
+                <input type="number" id="retirementAge" name="retirementAge" required placeholder="Retirement Age">
+            </div>
+            <div class="form-group">
+                <input type="number" id="startingSalary" name="startingSalary" required placeholder="Starting Salary">
+                <input type="number" id="annualSavings" name="annualSavings" step="0.1" required placeholder="Annual Savings %">
+            </div>
+            <div class="form-group">
+                <input type="number" id="annualRaise" name="annualRaise" step="0.1" required placeholder="Annual Raise %">
+                <input type="number" id="interestRate" name="interestRate" step="0.1" required placeholder="Interest Rate %">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn" onclick="clearForm()">Clear</button>
+                <button type="button" class="btn" onclick="setDefaults()">Defaults</button>
+                <button type="submit" class="btn">Make Me Rich!</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function clearForm() {
+            document.getElementById("retirementForm").reset();
+        }
+    
+        function setDefaults() {
+            document.getElementById("startingAge").value = 25;
+            document.getElementById("retirementAge").value = 65;
+            document.getElementById("startingSalary").value = 50000;
+            document.getElementById("annualSavings").value = 10.0.toFixed(1); // Set with one decimal place
+            document.getElementById("annualRaise").value = 2.0.toFixed(1); // Set with one decimal place
+            document.getElementById("interestRate").value = 7.0.toFixed(1); // Set with one decimal place
+        }
+    </script>
+</body>
+</html>
