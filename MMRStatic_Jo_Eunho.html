@@ -56,7 +56,7 @@
         }
         h1 {
             font-family: Arial, sans-serif;
-            font-size: 24px;
+            font-size: 27px;
             margin: 2px 0;
             font-weight: bold;
             
@@ -79,6 +79,32 @@
         .hidden {
             display: none;
         }
+
+        #summaryTable {
+            font-family: "Consolas", monospace;
+            font-size: 19px;
+            font-weight: bold;
+            width: 440px;
+        }
+
+        #detailTable {
+            font-family: "Consolas", monospace;
+            font-weight: bold;
+            font-size: 19px;
+            width: 440px;
+            border: 1px solid black;
+            background-color: rgb(242, 242, 170);
+        }
+        #detailTable th {
+            background-color: rgb(242, 242, 170);
+            text-align: right;
+            border: none; 
+        }
+        #detailTable td {
+            text-align: right;
+            border: none;
+        }
+
     </style>
 </head>
 <body>
@@ -102,32 +128,84 @@
                 <button type="button" class="btn" id="defaultsBtn" onclick="setDefaults()">Defaults</button>
                 <button type="submit" class="btn" id="makeMeRichBtn">Make Me Rich!</button>
             </div>
-    <table class="hidden" id="resultTable">
-        <tr>
-            <td>40</td>
-            <td>Years to invest</td>
-        </tr>
-        <tr>
-            <td>1,473,440</td>
-            <td>Retirement Fund</td>
-        </tr>
-        <tr>
-            <td>3,130,501</td>
-            <td>Lifetime Salary</td>
-        </tr>
-        <tr>
-            <td>1,160,390</td>
-            <td>Total saved</td>
-        </tr>
-        <tr>
-            <td>313,050</td>
-            <td>Earned Interest</td>
-        </tr>
+            <table class="hidden" id="summaryTable" style="border: none;">
+                <tr>
+                    <td style="text-align: right; border: none;">40</td>
+                    <td style="text-align: left; border: none;">Years to invest</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; border: none;">1,473,440</td>
+                    <td style="text-align: left; border: none;">Retirement Fund</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; border: none;">3,130,501</td>
+                    <td style="text-align: left; border: none;">Lifetime Salary</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; border: none;">1,160,390</td>
+                    <td style="text-align: left; border: none;">Total saved</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; border: none;">313,050</td>
+                    <td style="text-align: left; border: none;">Earned Interest</td>
+                </tr>
+            </table>
+                       
     </table>
+            <table class="hidden" id="detailTable">
+                <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Salary</th>
+                    <th>Savings</th>
+                    <th>Interest</th>
+                    <th>Retirement</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>25</td>
+                    <td>50,000</td>
+                    <td>5,000</td>
+                    <td>350</td>
+                    <td>5,350</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>51,000</td>
+                    <td>5,100</td>
+                    <td>7,32</td>
+                    <td>11,182</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>52,020</td>
+                    <td>5,202</td>
+                    <td>1,147</td>
+                    <td>17,530</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>53,060</td>
+                    <td>5,306</td>
+                    <td>1,599</td>
+                    <td>24,435</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>54,122</td>
+                    <td>5,412</td>
+                    <td>2,089</td>
+                    <td>31,936</td>
+                </tr>
+                </body>
+                </table>
 
     <script>
         function clearForm() {
             document.getElementById("retirementForm").reset();
+            document.getElementById("summaryTable").classList.add("hidden");
+            document.getElementById("detailTable").classList.add("hidden");
         }
 
         function setDefaults() {
@@ -141,7 +219,8 @@
 
         document.getElementById("retirementForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            document.getElementById("resultTable").classList.remove("hidden");
+            document.getElementById("summaryTable").classList.remove("hidden");
+            document.getElementById("detailTable").classList.remove("hidden");
         });
     </script>
 </body>
