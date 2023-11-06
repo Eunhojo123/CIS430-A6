@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Calculator</title>
+    <link rel="stylesheet" href="MMRStatic_Jo_Eunho.css">
+</head>
+<body>
+    <div class="container">               
+        <h1>Retirement Calculator</h1>  
+        <form id="retirementForm"> 
+            <div class="form-group">
+                <input type="number" id="startingAge" name="startingAge" required placeholder="Starting Age">               
+                <input type="number" id="retirementAge" name="retirementAge" required placeholder="Retirement Age">        
+            </div>
+            <div class="form-group">
+                <input type="number" id="startingSalary" name="startingSalary" required placeholder="Starting Salary">      
+                <input type="number" id="annualSavings" name="annualSavings" step="0.1" required placeholder="Annual Savings%"> 
+            </div>
+            <div class="form-group">
+                <input type="number" id="annualRaise" name="annualRaise" step="0.1" required placeholder="Annual Raise%">   
+                <input type="number" id="interestRate" name="interestRate" step="0.1" required placeholder="Interest Rate%">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn" id="clearBtn" onclick="clearForm()">Clear</button>             
+                <button type="button" class="btn" id="defaultsBtn" onclick="setDefaults()">Defaults</button>    
+                <button type="submit" class="btn" id="makeMeRichBtn">Make Me Rich!</button>                      
+            </div>
+        </form>
+    </div>
+    <table class="hidden" id="summaryTable">
+        <tr>
+            <td style="text-align: right; border: none;">40</td>
+            <td style="text-align: left; border: none;">Years to invest</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; border: none;">1,473,440</td>
+            <td style="text-align: left; border: none;">Retirement Fund</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; border: none;">3,130,501</td>
+            <td style="text-align: left; border: none;">Lifetime Salary</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; border: none;">1,160,390</td>
+            <td style="text-align: left; border: none;">Total saved</td>
+        </tr>
+        <tr>
+            <td style="text-align: right; border: none;">313,050</td>
+            <td style="text-align: left; border: none;">Earned Interest</td>
+        </tr>
+    </table>
+    <table class="hidden" id="detailTable">
+        <thead>
+            <tr>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Savings</th>
+                <th>Interest</th>
+                <th>Retirement</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>25</td>
+                <td>50,000</td>
+                <td>5,000</td>
+                <td>350</td>
+                <td>5,350</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>51,000</td>
+                <td>5,100</td>
+                <td>7,32</td>
+                <td>11,182</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>52,020</td>
+                <td>5,202</td>
+                <td>1,147</td>
+                <td>17,530</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>53,060</td>
+                <td>5,306</td>
+                <td>1,599</td>
+                <td>24,435</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>54,122</td>
+                <td>5,412</td>
+                <td>2,089</td>
+                <td>31,936</td>
+            </tr>
+    </table>
+    <script src="MMRStatic_Jo_Eunho.js"></script>
+</body>
+</html>
