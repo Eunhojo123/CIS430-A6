@@ -15,6 +15,64 @@ function setDefaults() {
 
 document.getElementById("retirementForm").addEventListener("submit", function(event) {
     event.preventDefault();
+
+    let startingAge = parseFloat(document.getElementById("startingAge").value);
+    let retirementAge = parseFloat(document.getElementById("retirementAge").value);
+    let startingSalary = parseFloat(document.getElementById("startingSalary").value);
+    let annualSavings = parseFloat(document.getElementById("annualSavings").value);
+    let annualRaise = parseFloat(document.getElementById("annualRaise").value);
+    let interestRate = parseFloat(document.getElementById("interestRate").value);
+
+    let totalYearsToInvest = retirementAge - startingAge;
+    let retirementFund = 0;
+    let lifetimeSalary = 0;
+    let totalSaved = 0;
+    let earnedInterest = 0;
+
+    const detailTableBody = document.getElementById("detailTableBody");
+
+    detailTableBody.innerHTML = '';
+
+    for (let i = 1; i <= totalYearsToInvest; i++) {
+       
+        const newRow = document.createElement("tr");
+
+        
+        newRow.innerHTML = `
+            <td><span id="currentAge${i}"></span></td>
+            <td><span id="currentSalary${i}"></span></td>
+            <td><span id="currentSavings${i}"></span></td>
+            <td><span id="currentInterest${i}"></span></td>
+            <td><span id="currentRetirement${i}"></span></td>
+        `;
+
+      
+        detailTableBody.appendChild(newRow);
+
+        let currentSalary = startingSalary * (1 + (annualRaise / 100));
+        let currentSavings = currentSalary * (annualSavings / 100);
+        let currentRetirement = retirementFund + currentSavings;
+        let currentInterest = currentRetirement * (interestRate / 100);
+
+        retirementFund = currentRetirement + currentInterest;
+        totalYearsToInvest--;
+        lifetimeSalary += currentSalary;
+        totalSaved += currentSavings;
+        earnedInterest += currentInterest;
+
+        document.getElementById("currentAge" + i).textContent = startingAge + i - 1;
+        document.getElementById("currentSalary" + i).textContent = currentSalary.toFixed(2);
+        document.getElementById("currentSavings" + i).textContent = currentSavings.toFixed(2);
+        document.getElementById("currentInterest" + i).textContent = currentInterest.toFixed(2);
+        document.getElementById("currentRetirement" + i).textContent = currentRetirement.toFixed(2);
+    }
+
+    document.getElementById("yearsToInvest").textContent = retirementAge - startingAge;
+    document.getElementById("retirementFund").textContent = retirementFund.toFixed(2);
+    document.getElementById("lifetimeSalary").textContent = lifetimeSalary.toFixed(2);
+    document.getElementById("totalSaved").textContent = totalSaved.toFixed(2);
+    document.getElementById("earnedInterest").textContent = earnedInterest.toFixed(2);
+
     document.getElementById("summaryTable").classList.remove("hidden");
     document.getElementById("detailTable").classList.remove("hidden");
 });
